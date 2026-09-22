@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Om Vanra | Aspiring Data Analyst</title>
+  <meta name="description" content="Portfolio of Om Vanra — Aspiring Data Analyst skilled in SQL, Python, Excel & Power BI. Turning raw data into actionable insights.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: { inter: ['Inter', 'sans-serif'] },
+          colors: {
+            dark: { 900: '#0a0a0f', 800: '#12121a', 700: '#1a1a2e', 600: '#22223a' },
+            accent: { DEFAULT: '#6366f1', light: '#818cf8', dark: '#4f46e5' },
+            cyan: { DEFAULT: '#22d3ee', dark: '#06b6d4' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    html,
+    body {
+      overflow-x: hidden;
+      width: 100%;
+      font-family: "Inter", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0a0a0f;
+      transition: 0.3s ease;
+    }
+
+    .gradient-text { 
+      background: linear-gradient(135deg, #6366f1, #22d3ee); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      background-clip: text; 
+    }
+
+    .glass { 
+      background: rgba(255,255,255,0.03); 
+      backdrop-filter: blur(12px); 
+      border: 1px solid rgba(255,255,255,0.08); 
+    }
+
+    .glow { box-shadow: 0 0 30px rgba(99,102,241,0.15); }
+
+    .card-hover { 
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1); 
+    }
+
+    .card-hover:hover { 
+      transform: translateY(-8px); 
+      box-shadow: 0 20px 40px rgba(99,102,241,0.2); 
+      border-color: rgba(99,102,241,0.3); 
+    }
+
+    .skill-chip { 
+      transition: all 0.3s ease; 
+    }
+
+    .skill-chip:hover { 
+      transform: scale(1.05); 
+      background: rgba(99,102,241,0.15); 
+      border-color: rgba(99,102,241,0.5); 
+    }
+
+    .hero-grid { 
+      background-image: radial-gradient(rgba(99,102,241,0.08) 1px, transparent 1px); 
+      background-size: 40px 40px; 
+    }
+
+    .fade-in { 
+      opacity: 0; 
+      transform: translateY(30px); 
+      transition: all 0.7s ease; 
+    }
+
+    .fade-in.visible { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+
+    .pulse-dot { animation: pulse 2s infinite; }
+
+    @keyframes pulse { 
+      0%, 100% { opacity: 1; } 
+      50% { opacity: 0.4; } 
+    }
+
+    .btn-primary { 
+      background: linear-gradient(135deg, #6366f1, #4f46e5); 
+      transition: all 0.3s ease; 
+    }
+
+    .btn-primary:hover { 
+      box-shadow: 0 8px 25px rgba(99,102,241,0.4); 
+      transform: translateY(-2px); 
+    }
+
+    .input-field:focus { 
+      border-color: #6366f1; 
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.15); 
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a0f; }
+    ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 20px; }
+
+    body.light-mode {
+      background: #f3f4f6;
+      color: #111827;
+    }
+
+    body.light-mode .glass {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    body.light-mode .text-white {
+      color: #111827 !important;
+    }
+
+    body.light-mode .text-gray-400,
+    body.light-mode .text-gray-500 {
+      color: #4b5563 !important;
+    }
+
+    body.light-mode .bg-dark-800\/50 {
+      background: #ffffff !important;
+    }
+
+    body.light-mode nav {
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    body.light-mode footer {
+      border-color: #d1d5db !important;
+    }
+
+    body.light-mode input,
+    body.light-mode textarea {
+      background: #ffffff !important;
+      color: #111827 !important;
+      border-color: #d1d5db !important;
+    }
+  </style>
+</head>
+<body class="text-gray-300">
+
+  <!-- ============ NAVBAR ============ -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-black gradient-text">OM.</a>
+      <div class="hidden md:flex items-center gap-8 font-medium">
+        <a href="#about" class="hover:text-white transition">About</a>
+        <a href="#skills" class="hover:text-white transition">Skills</a>
+        <a href="#projects" class="hover:text-white transition">Projects</a>
+        <a href="#contact" class="hover:text-white transition">Contact</a>
+        <a href="./OM_VANRA_RESUME.pdf" download="OM_VANRA_RESUME.pdf" target="_blank" class="px-4 py-2 rounded-xl text-sm glass font-semibold hover:border-indigo-500/50 hover:text-indigo-300 transition flex items-center gap-2">
+          <i class="fas fa-file-pdf text-red-400"></i> Resume
+        </a>
+        <button id="themeToggle" class="w-10 h-10 rounded-xl glass flex items-center justify-center">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+      <div class="flex items-center gap-3 md:hidden">
+        <button id="themeToggleMobile" class="w-10 h-10 rounded-xl glass flex items-center justify-center">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="menuBtn" class="text-2xl text-white"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden glass mx-4 rounded-xl p-5 text-center space-y-4">
+      <a href="#about" class="block">About</a>
+      <a href="#skills" class="block">Skills</a>
+      <a href="#projects" class="block">Projects</a>
+      <a href="#contact" class="block">Contact</a>
+      <a href="./OM_VANRA_RESUME.pdf" download="OM_VANRA_RESUME.pdf" target="_blank" class="block text-indigo-400 font-semibold py-2">
+        <i class="fas fa-file-pdf text-red-400 mr-2"></i>Download Resume
+      </a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="min-h-screen flex items-center hero-grid relative">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
+    <div class="max-w-6xl mx-auto px-6 py-32 relative z-10">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm mb-8">
+          <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></span>
+          <span class="text-gray-400">Open to Data Analyst Opportunities</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-black leading-tight text-white mb-6">
+          Hi, I'm <span class="gradient-text">Om Vanra</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-400 mb-6">
+          Aspiring Data Analyst | SQL, Python, Excel & Power BI Specialist
+        </p>
+        <p class="text-lg text-gray-500 leading-relaxed mb-10 max-w-2xl">
+          Passionate about turning complex raw data into actionable insights. Skilled in SQL querying, data cleaning, statistical analysis, and creating interactive visualization dashboards.
+        </p>
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a href="#projects" class="btn-primary px-8 py-3 rounded-xl text-white font-semibold flex items-center gap-2">
+            <span>View Projects</span>
+            <i class="fas fa-arrow-right text-sm"></i>
+          </a>
+          <a href="./OM_VANRA_RESUME.pdf" download="OM_VANRA_RESUME.pdf" target="_blank" class="px-8 py-3 rounded-xl glass font-semibold hover:border-indigo-500/50 hover:text-white transition flex items-center gap-2">
+            <i class="fas fa-file-pdf text-red-400"></i>
+            <span>Download Resume</span>
+          </a>
+        </div>
+        <div class="flex gap-4">
+          <a href="https://github.com/OmVanra" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="w-12 h-12 rounded-xl glass flex items-center justify-center hover:text-indigo-400 hover:border-indigo-500/50 transition">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/om-vanra-033b14291/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="w-12 h-12 rounded-xl glass flex items-center justify-center hover:text-indigo-400 hover:border-indigo-500/50 transition">
+            <i class="fab fa-linkedin-in text-xl"></i>
+          </a>
+          <a href="mailto:vanraom56@gmail.com" aria-label="Email" class="w-12 h-12 rounded-xl glass flex items-center justify-center hover:text-indigo-400 hover:border-indigo-500/50 transition">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="py-24">
+    <div class="max-w-6xl mx-auto px-6 fade-in">
+      <p class="text-indigo-400 font-semibold uppercase text-sm mb-2">About Me</p>
+      <h2 class="text-4xl font-bold text-white mb-12">Who I Am</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="text-gray-400 leading-relaxed mb-6">
+            I'm an aspiring Data Analyst who loves exploring datasets to find hidden trends, patterns, and insights that can drive better business decisions.
+          </p>
+          <p class="text-gray-400 leading-relaxed mb-6">
+            My core toolkit includes SQL for database querying, Python and Pandas for data manipulation, and Power BI/Excel for building impactful dashboards.
+          </p>
+          <p class="text-gray-400 leading-relaxed">
+            I am continuously sharpening my analytical skills through hands-on projects and real-world data problem solving.
+          </p>
+        </div>
+        <div class="glass rounded-2xl p-8">
+          <div class="space-y-4 text-sm">
+            <div class="flex justify-between border-b border-gray-800 pb-3">
+              <span class="text-gray-500">Name</span>
+              <span class="text-white">Om Vanra</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-800 pb-3">
+              <span class="text-gray-500">Role</span>
+              <span class="text-indigo-400">Aspiring Data Analyst</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-800 pb-3">
+              <span class="text-gray-500">Core Stack</span>
+              <span class="text-white">SQL, Python, Excel, Power BI</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-800 pb-3">
+              <span class="text-gray-500">Location</span>
+              <span class="text-white">India</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500">Status</span>
+              <span class="text-green-400">Open to Work</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="py-24 bg-dark-800/50">
+    <div class="max-w-6xl mx-auto px-6 fade-in">
+      <p class="text-indigo-400 font-semibold uppercase text-sm mb-2">Skills</p>
+      <h2 class="text-4xl font-bold text-white mb-12">Analytical Tools & Technologies</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="skill-chip glass rounded-2xl p-8 text-center">
+          <i class="fas fa-database text-4xl text-blue-400 mb-4"></i>
+          <h3 class="text-white font-semibold">SQL</h3>
+        </div>
+        <div class="skill-chip glass rounded-2xl p-8 text-center">
+          <i class="fab fa-python text-4xl text-yellow-400 mb-4"></i>
+          <h3 class="text-white font-semibold">Python</h3>
+        </div>
+        <div class="skill-chip glass rounded-2xl p-8 text-center">
+          <i class="fas fa-file-excel text-4xl text-green-400 mb-4"></i>
+          <h3 class="text-white font-semibold">Advanced Excel</h3>
+        </div>
+        <div class="skill-chip glass rounded-2xl p-8 text-center">
+          <i class="fas fa-chart-bar text-4xl text-amber-400 mb-4"></i>
+          <h3 class="text-white font-semibold">Power BI</h3>
+        </div>
+        <div class="skill-chip glass rounded-2xl p-8 text-center">
+          <i class="fas fa-table text-4xl text-indigo-400 mb-4"></i>
+          <h3 class="text-white font-semibold">Pandas & NumPy</h3>
+        </div>
+        <div class="skill-chip glass rounded-2xl p-8 text-center">
+          <i class="fas fa-chart-pie text-4xl text-cyan-400 mb-4"></i>
+          <h3 class="text-white font-semibold">Data Visualization</h3>
+        </div>
+        <div class="skill-chip glass rounded-2xl p-8 text-center">
+          <i class="fas fa-broom text-4xl text-pink-400 mb-4"></i>
+          <h3 class="text-white font-semibold">Data Cleaning</h3>
+        </div>
+        <div class="skill-chip glass rounded-2xl p-8 text-center">
+          <i class="fab fa-github text-4xl text-gray-300 mb-4"></i>
+          <h3 class="text-white font-semibold">GitHub</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="py-24">
+    <div class="max-w-6xl mx-auto px-6 fade-in">
+      <p class="text-indigo-400 font-semibold uppercase text-sm mb-2">Portfolio</p>
+      <h2 class="text-4xl font-bold text-white mb-12">Featured Projects</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- PROJECT 1: Customer Behavior Data Analysis -->
+        <div class="card-hover glass rounded-2xl overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="h-40 bg-gradient-to-br from-green-600/20 to-lime-600/20 flex items-center justify-center">
+              <i class="fas fa-users text-5xl text-green-400"></i>
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 mb-3 inline-block">
+                Python • SQL • Power BI
+              </span>
+              <h3 class="text-white font-bold text-xl mb-4">Customer Behavior Data Analysis</h3>
+              
+              <ul class="space-y-3 text-xs sm:text-sm text-gray-400 mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-white font-medium">End-to-End Analytics Pipeline:</strong> Built a full-stack retail analytics solution across Python, PostgreSQL, and Power BI to evaluate 3,900 consumer transactional records and optimize marketing strategy.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-white font-medium">Data Cleaning & Feature Engineering:</strong> Imputed missing data via category-level medians, standardized schemas to snake_case, and engineered quantitative age groups and purchase frequency features using Pandas.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-white font-medium">Advanced SQL Querying:</strong> Designed CTEs, subqueries, and ROW_NUMBER() window functions in PostgreSQL to analyze customer loyalty tiers, product rankings, and discount reliance.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-green-400 mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-white font-medium">Interactive Dashboarding:</strong> Created a Power BI executive dashboard with dynamic DAX KPI cards and cross-filtering slicers, identifying a conversion segment of 2,500+ repeat non-subscriber buyers.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="https://github.com/OmVanra/customer-shopping-behavior-analysis" target="_blank" rel="noopener noreferrer" class="btn-primary w-full py-3 rounded-xl text-white font-semibold text-sm flex items-center justify-center gap-2">
+              <i class="fab fa-github text-base"></i>
+              <span>View GitHub Repository</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: Meta Ad Performance Dashboard -->
+        <div class="card-hover glass rounded-2xl overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="h-40 bg-gradient-to-br from-indigo-600/20 to-cyan-600/20 flex items-center justify-center">
+              <i class="fas fa-bullseye text-5xl text-cyan-400"></i>
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-3 inline-block">
+                Power BI • DAX
+              </span>
+              <h3 class="text-white font-bold text-xl mb-4">Meta Ad Performance Dashboard</h3>
+              
+              <ul class="space-y-3 text-xs sm:text-sm text-gray-400 mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-white font-medium">Campaign Analytics:</strong> Built a Power BI dashboard to track Facebook and Instagram ad performance, covering 123.8K impressions, 14.7K clicks, and $2.5M total budget.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-white font-medium">Star-Schema Data Model:</strong> Created a star-schema data model in Power BI linking ads, campaigns, users, and events tables, along with a calendar table for time-based analysis.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-white font-medium">Dynamic DAX Measure Selector:</strong> Used DAX to build a dynamic measure selector, letting users switch between metrics (Impressions, Clicks, Purchases, etc.) across all charts from one dropdown.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="https://github.com/OmVanra/Meta-Ad-Performance-Dashboard" target="_blank" rel="noopener noreferrer" class="btn-primary w-full py-3 rounded-xl text-white font-semibold text-sm flex items-center justify-center gap-2">
+              <i class="fab fa-github text-base"></i>
+              <span>View GitHub Repository</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 3: E-Commerce Sales & Delivery Analysis -->
+        <div class="card-hover glass rounded-2xl overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="h-40 bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center">
+              <i class="fas fa-truck-fast text-5xl text-purple-400"></i>
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 mb-3 inline-block">
+                SQL (Google BigQuery)
+              </span>
+              <h3 class="text-white font-bold text-xl mb-4">E-Commerce Sales & Delivery Analysis</h3>
+              
+              <ul class="space-y-3 text-xs sm:text-sm text-gray-400 mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-white font-medium">Order Trend Analysis:</strong> Analyzed 100K+ e-commerce orders across 8 linked tables (customers, orders, payments, products) using SQL joins and CTEs to find sales trends and customer buying patterns.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-white font-medium">Revenue & Regional Growth:</strong> Calculated year-over-year revenue growth, average order value, and freight costs by state to understand which regions drive the most business.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0"></span>
+                  <span><strong class="text-white font-medium">Delivery Logistics:</strong> Compared actual vs. estimated delivery dates to find the fastest and slowest delivery states, helping spot delivery and logistics issues.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="https://github.com/OmVanra/E-Commerce-Sales---Delivery-Analysis" target="_blank" rel="noopener noreferrer" class="btn-primary w-full py-3 rounded-xl text-white font-semibold text-sm flex items-center justify-center gap-2">
+              <i class="fab fa-github text-base"></i>
+              <span>View GitHub Repository</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="py-24 bg-dark-800/50">
+    <div class="max-w-6xl mx-auto px-6 fade-in">
+      <p class="text-indigo-400 font-semibold uppercase text-sm mb-2">Contact</p>
+      <h2 class="text-4xl font-bold text-white mb-12">Get In Touch</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <form id="contactForm" class="space-y-5">
+          <input type="text" name="name" placeholder="Your Name" required class="input-field w-full px-5 py-3 rounded-xl bg-dark-700 border border-gray-800 outline-none text-white">
+          <input type="email" name="email" placeholder="Your Email" required class="input-field w-full px-5 py-3 rounded-xl bg-dark-700 border border-gray-800 outline-none text-white">
+          <input type="text" name="subject" placeholder="Subject" required class="input-field w-full px-5 py-3 rounded-xl bg-dark-700 border border-gray-800 outline-none text-white">
+          <textarea rows="5" name="message" placeholder="Your Message" required class="input-field w-full px-5 py-3 rounded-xl bg-dark-700 border border-gray-800 outline-none text-white resize-none"></textarea>
+          <button type="submit" id="submitBtn" class="btn-primary w-full py-3 rounded-xl text-white font-semibold flex items-center justify-center gap-2">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane text-sm"></i>
+          </button>
+          <div id="formStatus" class="hidden"></div>
+        </form>
+        <div class="space-y-4">
+          <a href="mailto:vanraom56@gmail.com" class="glass rounded-xl p-4 flex items-center gap-4 hover:border-indigo-500/50 transition block group">
+            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition">
+              <i class="fas fa-envelope text-lg"></i>
+            </div>
+            <div>
+              <p class="text-gray-500 text-xs uppercase font-medium">Email</p>
+              <p class="text-white font-medium group-hover:text-indigo-300 transition">vanraom56@gmail.com</p>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/om-vanra-033b14291/" target="_blank" rel="noopener noreferrer" class="glass rounded-xl p-4 flex items-center gap-4 hover:border-indigo-500/50 transition block group">
+            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition">
+              <i class="fab fa-linkedin-in text-lg"></i>
+            </div>
+            <div>
+              <p class="text-gray-500 text-xs uppercase font-medium">LinkedIn</p>
+              <p class="text-white font-medium group-hover:text-indigo-300 transition">linkedin.com/in/om-vanra-033b14291</p>
+            </div>
+          </a>
+          <a href="https://github.com/OmVanra" target="_blank" rel="noopener noreferrer" class="glass rounded-xl p-4 flex items-center gap-4 hover:border-indigo-500/50 transition block group">
+            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition">
+              <i class="fab fa-github text-lg"></i>
+            </div>
+            <div>
+              <p class="text-gray-500 text-xs uppercase font-medium">GitHub</p>
+              <p class="text-white font-medium group-hover:text-indigo-300 transition">github.com/OmVanra</p>
+            </div>
+          </a>
+          <div class="glass rounded-xl p-4 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+              <i class="fas fa-map-marker-alt text-lg"></i>
+            </div>
+            <div>
+              <p class="text-gray-500 text-xs uppercase font-medium">Location</p>
+              <p class="text-white font-medium">India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="py-8 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+      <p>© 2026 <span class="gradient-text font-semibold">Om Vanra</span> | Data Analyst Portfolio</p>
+      <div class="flex gap-5 text-lg">
+        <a href="https://github.com/OmVanra" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="hover:text-white transition"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/om-vanra-033b14291/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:vanraom56@gmail.com" aria-label="Email" class="hover:text-white transition"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script>
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("glass", window.scrollY > 50);
+    });
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      const isOpen = !mobileMenu.classList.contains("hidden");
+      menuBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+
+    document.querySelectorAll("#mobileMenu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document.querySelectorAll(".fade-in").forEach((el) => {
+      observer.observe(el);
+    });
+
+    const themeToggle = document.getElementById("themeToggle");
+    const themeToggleMobile = document.getElementById("themeToggleMobile");
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      const isLight = document.body.classList.contains("light-mode");
+      const icon = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      themeToggle.innerHTML = icon;
+      themeToggleMobile.innerHTML = icon;
+    }
+
+    themeToggle.addEventListener("click", toggleTheme);
+    themeToggleMobile.addEventListener("click", toggleTheme);
+
+    // Form Submission Handler
+    const contactForm = document.getElementById("contactForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const formStatus = document.getElementById("formStatus");
+
+    if (contactForm) {
+      contactForm.addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const name = this.elements["name"].value.trim();
+        const email = this.elements["email"].value.trim();
+        const subject = this.elements["subject"].value.trim();
+        const message = this.elements["message"].value.trim();
+
+        const originalBtnContent = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i><span>Sending...</span>';
+
+        const mailtoSubject = encodeURIComponent(subject ? `${subject} - from ${name}` : `Portfolio Inquiry from ${name}`);
+        const mailtoBody = encodeURIComponent(`Hi Om,\n\n${message}\n\n---\nSender: ${name}\nEmail: ${email}`);
+        const mailtoUrl = `mailto:vanraom56@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+        // When opened directly as a local file (file:///), FormSubmit rejects file:// protocol.
+        // Seamlessly open user's default email app prefilled with all details.
+        if (window.location.protocol === "file:") {
+          window.location.href = mailtoUrl;
+
+          formStatus.className = "p-4 rounded-xl text-sm glass border border-green-500/40 text-green-300 flex items-start gap-3 mt-4";
+          formStatus.innerHTML = `
+            <i class="fas fa-check-circle text-lg text-green-400 mt-0.5"></i>
+            <div>
+              <p class="font-semibold text-white">Opening Email App...</p>
+              <p class="text-xs text-gray-300 mt-1">Pre-filled your message for <span class="text-indigo-300 font-medium">vanraom56@gmail.com</span>. You can also send directly from your email app.</p>
+            </div>
+          `;
+          formStatus.classList.remove("hidden");
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnContent;
+          contactForm.reset();
+          return;
+        }
+
+        // When hosted on a web server (GitHub Pages, Netlify, Vercel, localhost)
+        try {
+          const response = await fetch("https://formsubmit.co/ajax/vanraom56@gmail.com", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+              name: name,
+              email: email,
+              _subject: subject ? `Portfolio: ${subject}` : `New message from ${name}`,
+              message: message
+            })
+          });
+
+          if (response.ok) {
+            formStatus.className = "p-4 rounded-xl text-sm glass border border-green-500/40 text-green-300 flex items-start gap-3 mt-4";
+            formStatus.innerHTML = `
+              <i class="fas fa-check-circle text-lg text-green-400 mt-0.5"></i>
+              <div>
+                <p class="font-semibold text-white">Message Sent Successfully!</p>
+                <p class="text-xs text-gray-300 mt-1">Thank you for reaching out, ${name}. I will get back to you soon!</p>
+              </div>
+            `;
+            formStatus.classList.remove("hidden");
+            contactForm.reset();
+          } else {
+            throw new Error("Submission failed");
+          }
+        } catch (err) {
+          window.location.href = mailtoUrl;
+          formStatus.className = "p-4 rounded-xl text-sm glass border border-indigo-500/40 text-indigo-200 flex items-start gap-3 mt-4";
+          formStatus.innerHTML = `
+            <i class="fas fa-envelope text-lg text-indigo-400 mt-0.5"></i>
+            <div>
+              <p class="font-semibold text-white">Opening Email Draft...</p>
+              <p class="text-xs text-gray-300 mt-1">Direct draft opened in your mail app for <a href="mailto:vanraom56@gmail.com" class="text-indigo-400 underline font-medium">vanraom56@gmail.com</a>.</p>
+            </div>
+          `;
+          formStatus.classList.remove("hidden");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnContent;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
