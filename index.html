@@ -167,7 +167,13 @@
     body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .5; background-image: linear-gradient(rgba(149, 171, 222, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(149, 171, 222, .035) 1px, transparent 1px); background-size: 54px 54px; mask-image: linear-gradient(to bottom, #000, transparent 75%); }
     .gradient-text { background: linear-gradient(115deg, #a7b8ff, #55e0d2); -webkit-background-clip: text; background-clip: text; }
     .glass { background: rgba(18, 28, 50, .64); border-color: var(--line); box-shadow: 0 16px 48px rgba(0, 0, 0, .12); backdrop-filter: blur(18px); }
-    .hero-grid { background-image: none; }
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(149, 171, 222, .075) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(149, 171, 222, .075) 1px, transparent 1px);
+      background-position: center;
+      background-size: 48px 48px;
+    }
     .hero-grid::before { content: ""; position: absolute; width: 56rem; height: 56rem; right: -30rem; top: 50%; transform: translateY(-50%); border-radius: 50%; border: 1px solid rgba(132, 157, 255, .09); box-shadow: 0 0 0 5rem rgba(132, 157, 255, .025), 0 0 0 10rem rgba(132, 157, 255, .018); }
     #navbar .max-w-6xl { max-width: 1180px; }
     #navbar.glass { background: rgba(8, 13, 25, .75); border-bottom: 1px solid var(--line); }
